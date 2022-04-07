@@ -9,7 +9,7 @@ import datetime
 import os
 import sys
 import message
-
+import demjson
 
 class HitCarder(object):
     """Hit carder class
