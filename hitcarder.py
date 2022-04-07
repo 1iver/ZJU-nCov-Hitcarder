@@ -94,19 +94,19 @@ class HitCarder(object):
 
     def get_info(self, html=None):
         """Get hit card info, which is the old info with updated new time."""
-        if not html:
+               if not html:
             time.sleep(1)
             res = self.sess.get(self.base_url)
             html = res.content.decode()
 
         try:
-            old_infos = re.findall(r'oldInfo: ({[^\n]+})', html)
+            old_infos = re.findall(r'info: \$.extend\(([^}]*})', html)
             if len(old_infos) != 0:
-                old_info = json.loads(old_infos[0])
+                old_info = demjson.decode(old_infos[0])
             else:
                 raise RegexMatchError("未发现缓存信息，请先至少手动成功打卡一次再运行脚本")
-
             new_info_tmp = json.loads(re.findall(r'def = ({[^\n]+})', html)[0])
+            old_info.update(new_info_tmp)
             new_id = new_info_tmp['id']
             name = re.findall(r'realname: "([^\"]+)",', html)[0]
             number = re.findall(r"number: '([^\']+)',", html)[0]
@@ -141,6 +141,9 @@ class HitCarder(object):
         new_info['gwszdd'] = ""
         new_info['jcqzrq'] = ""
         new_info['ismoved'] = 0
+        new_info["adress"] = "浙江省杭州市西湖区蒋村街道余杭塘河绿道"
+        new_info["city"] = "杭州市"
+        new_info["area"] = "浙江省 杭州市 西湖区"
         new_info.update(magic_code_group)
 
         self.info = new_info
