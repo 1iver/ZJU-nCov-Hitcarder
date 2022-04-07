@@ -94,7 +94,7 @@ class HitCarder(object):
 
     def get_info(self, html=None):
         """Get hit card info, which is the old info with updated new time."""
-               if not html:
+        if not html:
             time.sleep(1)
             res = self.sess.get(self.base_url)
             html = res.content.decode()
