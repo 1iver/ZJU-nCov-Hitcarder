@@ -125,25 +125,25 @@ class HitCarder(object):
             raise DecodeError('JSON decode error: ' + str(err))
 
         new_info = old_info.copy()
+        
         new_info['id'] = new_id
         new_info['name'] = name
         new_info['number'] = number
         new_info["date"] = self.get_date()
         new_info["created"] = round(time.time())
         # form change
-        new_info['jrdqjcqk'] = ""
-        new_info['jrdqtlqk'] = []
-        new_info['sfsqhzjkk'] = 1
-        new_info['sqhzjkkys'] = 1
-        new_info['sfqrxxss'] = 1
-        new_info['szgjcs'] = ""
-        new_info['zgfx14rfhsj'] = ""
-        new_info['gwszdd'] = ""
-        new_info['jcqzrq'] = ""
-        new_info['ismoved'] = 0
-        new_info["adress"] = "浙江省杭州市西湖区蒋村街道余杭塘河绿道"
+        new_info["sfymqjczrj"] = 0
+        new_info["sfqrxxss"] = 1
+        del new_info['jrdqtlqk']
+        new_info["adress"] = "浙江省杭州市西湖区三墩镇浙江大学紫金港校区-留学生公寓1期浙江大学(紫金港校区)"
+        new_info[
+            "geo_api_info"] = '{"type":"complete","position":{"Q":30.309422743056,"R":120.08722846137198,"lng":120.087228,"lat":30.309423},"location_type":"html5","message":"Get ipLocation failed.Get geolocation success.Convert Success.Get address success.","accuracy":153,"isConverted":true,"status":1,"addressComponent":{"citycode":"0571","adcode":"330106","businessAreas":[],"neighborhoodType":"","neighborhood":"","building":"","buildingType":"","street":"龙宇街","streetNumber":"17-18号","country":"中国","province":"浙江省","city":"杭州市","district":"西湖区","towncode":"330106109000","township":"三墩镇"},"formattedAddress":"浙江省杭州市西湖区三墩镇浙江大学紫金港校区-留学生公寓1期浙江大学(紫金港校区)","roads":[],"crosses":[],"pois":[],"info":"SUCCESS"}'
         new_info["city"] = "杭州市"
         new_info["area"] = "浙江省 杭州市 西湖区"
+        new_info['szgjcs'] = ""
+        new_info['zgfx14rfhsj'] = ""
+        new_info['ismoved'] = 0
+
         new_info.update(magic_code_group)
 
         self.info = new_info
