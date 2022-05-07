@@ -147,9 +147,18 @@ class HitCarder(object):
         new_info.update(magic_code_group)
 
         self.info = new_info
+        new_info["verifyCode"] = self.decode_captcha()
         # print(json.dumps(self.info))
         return new_info
-
+     def decode_captcha(self):
+        img = self.sess.get(self.captcha_url)
+        f = open("code.png", "wb")
+        f.write(img.content)
+        f.close()
+        solver = TwoCaptcha(os.environ.get('2CAPTCHA_KEY'))
+        result = solver.normal("code.png")
+        return result["code"]
+    
     def _rsa_encrypt(self, password_str, e_str, M_str):
         password_bytes = bytes(password_str, 'ascii')
         password_int = int.from_bytes(password_bytes, 'big')
