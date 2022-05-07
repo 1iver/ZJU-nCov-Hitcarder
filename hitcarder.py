@@ -155,7 +155,7 @@ class HitCarder(object):
         f = open("code.png", "wb")
         f.write(img.content)
         f.close()
-        solver = TwoCaptcha(os.environ.get('2CAPTCHA_KEY'))
+        solver = TwoCaptcha(os.environ.get('CAPTCHA_KEY'))
         result = solver.normal("code.png")
         return result["code"]
     
