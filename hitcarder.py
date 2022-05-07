@@ -11,6 +11,8 @@ import sys
 import message
 import demjson
 from twocaptcha import TwoCaptcha
+
+
 class HitCarder(object):
     """Hit carder class
 
@@ -125,7 +127,7 @@ class HitCarder(object):
             raise DecodeError('JSON decode error: ' + str(err))
 
         new_info = old_info.copy()
-        
+
         new_info['id'] = new_id
         new_info['name'] = name
         new_info['number'] = number
@@ -150,7 +152,8 @@ class HitCarder(object):
         new_info["verifyCode"] = self.decode_captcha()
         # print(json.dumps(self.info))
         return new_info
-     def decode_captcha(self):
+
+    def decode_captcha(self):
         img = self.sess.get(self.captcha_url)
         f = open("code.png", "wb")
         f.write(img.content)
@@ -158,7 +161,7 @@ class HitCarder(object):
         solver = TwoCaptcha(os.environ.get('CAPTCHA_KEY'))
         result = solver.normal("code.png")
         return result["code"]
-    
+
     def _rsa_encrypt(self, password_str, e_str, M_str):
         password_bytes = bytes(password_str, 'ascii')
         password_int = int.from_bytes(password_bytes, 'big')
