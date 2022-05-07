@@ -10,7 +10,7 @@ import os
 import sys
 import message
 import demjson
-
+from twocaptcha import TwoCaptcha
 class HitCarder(object):
     """Hit carder class
 
