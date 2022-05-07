@@ -25,6 +25,9 @@ inputs:
     description: pushplus_token.
     required: false
     default: ''
+  captcha_key:
+    description: captcha_key.
+    required: true
 
 runs:
   using: "composite"
@@ -36,6 +39,7 @@ runs:
         DINGTALK_TOKEN: ${{ inputs.dingtalk_token }}
         SERVERCHAN_KEY: ${{ inputs.serverchan_key }}
         PUSHPLUS_TOKEN: ${{ inputs.pushplus_token }}
+        CAPTCHA_KEY: ${{inputs.captcha_key}}
       run: |
         cd ${{ github.action_path }}
         pip install -r ./requirements.txt
