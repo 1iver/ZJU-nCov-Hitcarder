@@ -150,7 +150,7 @@ class HitCarder(object):
         new_info.update(magic_code_group)
 
         self.info = new_info
-        new_info["verifyCode"] = self.decode_captcha()
+        # new_info["verifyCode"] = self.decode_captcha()
         # print(json.dumps(self.info))
         return new_info
 
