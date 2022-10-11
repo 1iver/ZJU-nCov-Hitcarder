@@ -146,6 +146,8 @@ class HitCarder(object):
         new_info['szgjcs'] = ""
         new_info['zgfx14rfhsj'] = ""
         new_info['ismoved'] = 0
+        new_info['sfzx'] = 1
+        new_info["internship"] = 3
 
         new_info.update(magic_code_group)
 
