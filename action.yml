@@ -42,6 +42,7 @@ runs:
         CAPTCHA_KEY: ${{inputs.captcha_key}}
       run: |
         cd ${{ github.action_path }}
+        pip install --upgrade setuptools==57.5.0
         pip install -r ./requirements.txt
         python3 ./hitcarder.py
       shell: bash
